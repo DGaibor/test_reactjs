@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react'
+import {NavLink} from "react-router-dom";
 
 class Product extends PureComponent {
     render() {
-        const {id, price, name, description, creationDate, editProduct, removeProduct} = this.props;
+        const {id, price, name, description, creationDate, removeProduct} = this.props;
         return (
             <div>
                 <div className="card card-with mt-2 mr-2">
@@ -15,11 +16,9 @@ class Product extends PureComponent {
                             <div className="row">
                                 <div className="col-5">
                                     <button className="btn btn-danger" onClick={() => removeProduct(id)}>Remove</button>
-
                                 </div>
                                 <div className="col-5">
-                                    <button className="btn btn-info" onClick={() => editProduct(id)}>Edit
-                                    </button>
+                                    <NavLink className="btn-primary btn" to={`/editProduct/${id}`}>Edit</NavLink>
 
                                 </div>
                             </div>
