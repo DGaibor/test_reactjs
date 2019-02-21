@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
-import Product from './Product'
 import {NavLink} from "react-router-dom";
+
+import Product from './Product'
 
 class ListProducts extends PureComponent {
     render() {

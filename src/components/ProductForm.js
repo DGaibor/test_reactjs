@@ -65,14 +65,7 @@ class ProductForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        if (this.props.addProduct) {
-            this.props.addProduct(this.state.product);
-        }
-
-        if (this.props.updateProduct) {
-            this.props.updateProduct(this.state.product)
-        }
+        this.props.actionProduct(this.state.product);
 
         this.setState({
             product: {

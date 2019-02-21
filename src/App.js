@@ -46,19 +46,17 @@ class App extends Component {
                 creationDate: new Date(Date.now()),
             }
         }
-
     };
 
-    generateUniqueId() {
+    generateUniqueId = () => {
         return Math.random().toString(36).substr(2, 16)
-    }
+    };
 
     handleRemoveProduct = (id) => {
 
         this.setState(prevState => {
             return delete prevState.products[id];
         });
-
     };
 
     handleAddProduct = (product) => {
@@ -68,7 +66,7 @@ class App extends Component {
             return prevState.products[id] = {
                 name: product.name,
                 price: product.price,
-                id: id,
+                id,
                 description: product.description,
                 creationDate: new Date(Date.now())
             }
@@ -81,7 +79,6 @@ class App extends Component {
         this.setState(prevState => {
             return prevState.products[productToUpdate.id] = productToUpdate;
         });
-
     };
 
     searchProduct = (id, products) => {
@@ -93,11 +90,13 @@ class App extends Component {
                 <div className="container">
                     <Switch>
                         <Route exact path="/"
-                               render={(match) => <ListProducts title={'Product List'} match={match}
+                               render={(match) => <ListProducts title={'Product List'}
                                                                 products={this.state.products}
-                                                                handleRemoveProduct={this.handleRemoveProduct}/>}/>
+                                                                handleRemoveProduct={this.handleRemoveProduct}
+                                                                match={match}/>}/>
                         <Route path="/addProduct"
-                               render={(match) => <ProductForm title={'Add Product'} addProduct={this.handleAddProduct}
+                               render={(match) => <ProductForm title={'Add Product'}
+                                                               actionProduct={this.handleAddProduct}
                                                                match={match}/>}/>
                         <Route path="/editProduct/:id"
                                render={(match) => {
@@ -105,7 +104,7 @@ class App extends Component {
                                    const product = this.searchProduct(id, this.state.products);
 
                                    return (<ProductForm product={product} title={'Edit Product'}
-                                                        updateProduct={this.handleUpdateProduct}
+                                                        actionProduct={this.handleUpdateProduct}
                                                         match={match}/>)
                                }}/>
                     </Switch>
