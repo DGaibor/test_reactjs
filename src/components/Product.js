@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 class Product extends PureComponent {
     render() {
         const {id, price, name, description, creationDate, removeProduct} = this.props;
+
         return (
             <div>
                 <div className="card card-with mt-2 mr-2">
@@ -19,15 +20,12 @@ class Product extends PureComponent {
                                 </div>
                                 <div className="col-5">
                                     <NavLink className="btn-primary btn" to={`/editProduct/${id}`}>Edit</NavLink>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
         )
     }
 }

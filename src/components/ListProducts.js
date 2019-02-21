@@ -3,12 +3,14 @@ import Product from './Product'
 import {NavLink} from "react-router-dom";
 
 class ListProducts extends PureComponent {
-
     render() {
+
+        const { title, products, handleRemoveProduct} = this.props;
+
         return (
             <div>
                 <div className='title-page'>
-                   {this.props.title}
+                   {title}
                 </div>
                 <div className="row">
                     <div className="col-12">
@@ -17,7 +19,8 @@ class ListProducts extends PureComponent {
                 </div>
                 <div className="col-12">
                     <div className="row">
-                        {this.props.products.map((product, index) =>
+
+                        {Object.values(products).map((product, index) =>
                             <Product
                                 key={product.id.toString()}
                                 id={product.id}
@@ -25,15 +28,12 @@ class ListProducts extends PureComponent {
                                 name={product.name}
                                 description={product.description}
                                 creationDate={product.creationDate}
-                                removeProduct={this.props.handleRemoveProduct}
+                                removeProduct={handleRemoveProduct}
                             />
                         )}
                     </div>
                 </div>
-
-
             </div>
-
         )
     }
 }
